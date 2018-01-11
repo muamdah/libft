@@ -6,7 +6,7 @@
 /*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/01 14:32:31 by muamdah           #+#    #+#             */
-/*   Updated: 2018/01/01 16:52:11 by muamdah          ###   ########.fr       */
+/*   Updated: 2018/01/08 20:09:09 by muamdah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 
 	s2 = ft_strnew(len);
 	a = 0;
-	if (!s)
+	if (!s || !s2)
 		return (NULL);
 	while (a < len)
 	{

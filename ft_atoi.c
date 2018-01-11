@@ -6,7 +6,7 @@
 /*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 09:08:08 by muamdah           #+#    #+#             */
-/*   Updated: 2017/12/29 09:48:41 by muamdah          ###   ########.fr       */
+/*   Updated: 2018/01/09 19:22:45 by muamdah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 int		ft_atoi(const char *str)
 {
-	char	*s;
-	int		neg;
-	int		nb;
+	int			neg;
+	int			i;
+	int			nb;
 
-	neg = 0;
+	neg = 1;
 	nb = 0;
-	s = (char *)str;
-	while (*s == '\t' || *s == '\n' || *s == '\r' || *s == '\v' || *s == '\f'
-			|| *s == ' ')
-		s++;
-	if (*s == '-')
-		neg = 1;
-	if (*s == '+' || *s == '-')
-		s++;
-	while (*s >= '0' && *s <= '9')
+	i = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' || str[i] == '\v' || str[i] == '\f'
+			|| str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+		neg = -1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		nb = (nb * 10) + *s - '0';
-		s++;
+		nb = (nb * 10) + (str[i] - 48);
+		i++;
 	}
-	if (neg != 0)
-		nb = -nb;
-	return (nb);
+	return (nb * neg);
 }

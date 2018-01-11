@@ -6,7 +6,7 @@
 /*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 13:58:40 by muamdah           #+#    #+#             */
-/*   Updated: 2017/12/29 11:36:51 by muamdah          ###   ########.fr       */
+/*   Updated: 2018/01/09 09:57:47 by muamdah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strncat(char *s1, const char *s2, size_t n)
 	a = 0;
 	while (s1[i] != '\0')
 		i++;
-	while (a < n)
+	while (a < n && s2[a])
 	{
 		s1[i] = s2[a];
 		a++;

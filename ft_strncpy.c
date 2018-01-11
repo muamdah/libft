@@ -6,7 +6,7 @@
 /*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:08:07 by muamdah           #+#    #+#             */
-/*   Updated: 2017/12/28 14:12:29 by muamdah          ###   ########.fr       */
+/*   Updated: 2018/01/09 08:48:19 by muamdah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ char	*ft_strncpy(char *dest, const char *src, unsigned int len)
 	unsigned int i;
 
 	i = 0;
-	while (src[i] != '\0' && i < len)
+	while (i < len && src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	while (dest[i])
-		dest[i++] = '\0';
+	while (i < len)
+	{
+		dest[i] = '\0';
+		i++;
+	}
 	return (dest);
 }

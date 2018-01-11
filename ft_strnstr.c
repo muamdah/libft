@@ -6,30 +6,32 @@
 /*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:21:49 by muamdah           #+#    #+#             */
-/*   Updated: 2017/12/28 16:23:02 by muamdah          ###   ########.fr       */
+/*   Updated: 2018/01/09 15:45:59 by muamdah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <string.h>
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *to_find, size_t n)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int i;
-	int a;
+	size_t i;
+	size_t a;
+	char * to_find;
 
+	to_find = (char*)s2;
 	i = 0;
 	if (to_find[0] == '\0')
 		return ((char*)s1);
-	while (s1[i])
+	while (s1[i] && i < n)
 	{
 		a = 0;
-		while (s1[i + a] == to_find[a])
+		while (s1[i + a] == to_find[a] && s1[i + a] != s1[n])
 		{
 			a++;
-			if (to_find[a] == to_find[n])
+			if (to_find[a] == '\0')
 				return ((char*)s1 + i);
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

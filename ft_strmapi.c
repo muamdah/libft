@@ -6,7 +6,7 @@
 /*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/11 13:06:51 by muamdah           #+#    #+#             */
-/*   Updated: 2018/01/01 14:06:33 by muamdah          ###   ########.fr       */
+/*   Updated: 2018/01/09 17:46:32 by muamdah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
-	unsigned int	a;
 	char			*map;
 
 	i = 0;
 	map = ft_strdup(s);
 	if (!s || !f || !map)
 		return (NULL);
-	while (map[i] < map[a])
+	while (map[i])
 	{
-		map[i] = f(a, map[i]);
+		map[i] = f(i, map[i]);
 		i++;
 	}
 	return (map);

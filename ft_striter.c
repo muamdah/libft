@@ -14,7 +14,7 @@
 
 void	ft_striter(char *s, void (*f)(char *))
 {
-	int		i;
+	unsigned int		i;
 
 	i = 0;
 	if (s[i] != '\0' || f != NULL)
