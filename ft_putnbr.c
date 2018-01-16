@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/11 13:06:51 by muamdah           #+#    #+#             */
-/*   Updated: 2018/01/01 10:50:26 by muamdah          ###   ########.fr       */
+/*   Created: 2018/01/15 09:10:20 by muamdah           #+#    #+#             */
+/*   Updated: 2018/01/15 09:10:30 by muamdah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *src, int c, size_t n)
+void    ft_putnbr(int n)
 {
-	unsigned char	*s;
-	size_t	i;
-	if (src == NULL)
-		return (NULL);
-	s = (unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		if (s[i] == (unsigned char)c)
-		{
-			src = (const void *)s;
-			return ((void *)src + i);
-		}
-		i++;
-	}
-	return (NULL);
+    if (n == -2147483648)
+    {
+        ft_putstr("-2147483648");
+        return ;
+    }
+    if (n < 0)
+    {
+        ft_putchar('-');
+        n *= -1;
+    }
+    if (n > 10)
+    {
+        ft_putnbr(n / 10);
+        ft_putnbr(n % 10);
+    }
+    if (n >= 0 && n <= 9)
+    {
+        ft_putchar(n + '0');
+    }
 }

@@ -17,9 +17,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*map;
 
+	if (s == NULL || f == NULL)
+		return (NULL);
 	i = 0;
-	map = ft_strdup(s);
-	if (!s || !f || !map)
+	if (!(map = ft_strdup(s)))
 		return (NULL);
 	while (map[i])
 	{

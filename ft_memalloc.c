@@ -15,9 +15,8 @@
 void	*ft_memalloc(size_t size)
 {
 	void	*fresh;
-
 	fresh = malloc(sizeof(size));
-	if (!fresh)
+	if (!fresh || size > 2147493647)
 		return (NULL);
 	ft_bzero(fresh, size);
 	return (fresh);

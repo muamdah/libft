@@ -17,12 +17,11 @@ void	ft_striter(char *s, void (*f)(char *))
 	unsigned int		i;
 
 	i = 0;
-	if (s[i] != '\0' || f != NULL)
+	if (s == NULL || f == NULL)
+		return ;
+	while (s[i])
 	{
-		while (s[i])
-		{
-			f(&s[i]);
-			i++;
-		}
+		f(&s[i]);
+		i++;
 	}
 }

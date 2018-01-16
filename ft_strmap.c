@@ -18,8 +18,9 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char	*map;
 
 	i = 0;
-	map = ft_strdup(s);
-	if (!s || !f || !map)
+	if (s == NULL || f == NULL)
+		return (NULL);
+	if (!(map = ft_strdup(s)))
 		return (NULL);
 	while (map[i])
 	{
