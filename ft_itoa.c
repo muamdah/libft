@@ -3,66 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: miclaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/08 14:39:11 by muamdah           #+#    #+#             */
-/*   Updated: 2018/01/09 08:52:53 by muamdah          ###   ########.fr       */
+/*   Created: 2017/11/18 11:34:52 by miclaude          #+#    #+#             */
+/*   Updated: 2017/11/19 20:25:59 by miclaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	size_str(long int n)
+static int	ft_len(int n)
 {
-	int i;
+	int		len;
 
-	i = 1;
-	if (n < 0)
-		n = n * -1;
-	while (n >= 10)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
-}
-
-static char	*rempli_str(char *str, long int n, int len)
-{
-	int debut;
-
-	str[len] = '\0';
-	len = len - 1;
+	len = 0;
+	if (n >= 0 && n <= 9)
+		return (1);
 	if (n < 0)
 	{
-		n = n * -1;
-		debut = 1;
-		str[0] = '-';
+		n = -n;
+		len++;
 	}
-	else
-		debut = 0;
-	while (len >= debut)
+	while (n)
 	{
-		str[len] = n % 10 + '0';
-		n = n / 10;
-		len--;
+		n /= 10;
+		len++;
 	}
-	return (str);
+	return (len);
 }
 
 char		*ft_itoa(int n)
 {
-	char		*str;
-	int			len;
-	long int	n2;
+	char	*str;
+	size_t	len;
+	long	nb;
 
-	n2 = n;
-	len = size_str(n2);
-	if (n2 < 0)
-		len = len + 1;
-	str = ft_strnew(len);
-	if (!str)
+	nb = n;
+	len = ft_len(n);
+	if (nb < -2147483648 || nb > 2147483647)
+		return (0);
+	if (!(str = (char*)malloc(sizeof(char) * len + 1)))
 		return (NULL);
-	str = rempli_str(str, n2, len);
+	if (nb == 0)
+		str[0] = '0';
+	if (nb < 0)
+	{
+		str[0] = '-';
+		nb = -nb;
+	}
+	str[len] = '\0';
+	while (nb)
+	{
+		len--;
+		str[len] = (nb % 10) + '0';
+		nb /= 10;
+	}
 	return (str);
 }

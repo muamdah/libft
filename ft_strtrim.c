@@ -1,67 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strtim.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: miclaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/01 18:47:00 by muamdah           #+#    #+#             */
-/*   Updated: 2018/01/08 20:10:32 by muamdah          ###   ########.fr       */
+/*   Created: 2017/11/13 16:12:55 by miclaude          #+#    #+#             */
+/*   Updated: 2017/11/22 14:38:03 by miclaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_count(char const *s)
+char	*ft_strtrim(char const *s)
 {
-	int		i;
-	int		a;
+	int i;
+	int j;
 
 	i = 0;
-	a = 0;
-	while ((s[i]) && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
-		i++;
-	while ((s[i]) && (s[i] != ' ' || s[i] != '\n' || s[i] != '\t'))
-	{
-		a++;
-		i++;
-	}
-	if (a == 0)
-		return (0);
-	i--;
-	  while (i != 0 && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
-	  {
-	  	a--;
-	  	i--;
-	  }
-	return (a);
-}
-
-char			*ft_strtrim(char const *s)
-{
-	int		i;
-	int		a;
-	char	*s2;
-	int		s3;
-
-	if (s == NULL)
+	j = 0;
+	if (!s)
 		return (NULL);
-	a = 0;
-	i = 0;
-	s3 = ft_count(s);
-	if (s3 == 0)
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+		i++;
+	if (s[i] == '\0')
 		return (ft_strdup(""));
-	s2 = (char*)malloc(sizeof(char) * (s3 + 1));
-	if (!s2)
-		return (NULL);
-	while ((s[i]) && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
-		i++;
-	while (a < s3)
-	{
-		s2[a] = s[i];
-		a++;
-		i++;
-	}
-	s2[a] = '\0';
-	return (s2);
+	j = ft_strlen(s) - 1;
+	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
+		j--;
+	return (ft_strsub(s, i, j - i + 1));
 }

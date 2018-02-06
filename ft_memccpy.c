@@ -3,54 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: miclaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/11 13:06:51 by muamdah           #+#    #+#             */
-/*   Updated: 2018/01/11 08:39:51 by muamdah          ###   ########.fr       */
+/*   Created: 2017/11/11 14:11:36 by miclaude          #+#    #+#             */
+/*   Updated: 2017/11/20 13:24:44 by miclaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	size_t				i;
+	unsigned char		*dest1;
+	const unsigned char	*src1;
 
 	i = 0;
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-
+	dest1 = dest;
+	src1 = src;
 	while (i < n)
 	{
-		d[i] = s[i];
-		if (s[i] == (unsigned char)c)
-			return (d+i+1);
+		dest1[i] = src1[i];
+		if (src1[i] == (unsigned char)c)
+			return (dest1 + i + 1);
 		i++;
 	}
-
 	return (NULL);
 }
-
-// int		main()
-// {
-// 	char	src[] = "test basic du memccpy !";
-// 			char	buff1[22];
-
-// 			memset(buff1, 0, sizeof(buff1));
-
-// 			char	*r1 = memccpy(buff1, src, 'm', 22);
-// 			char	*r2 = ft_memccpy(buff1, src, 'm', 22);
-// 			int i;
-// 			i = 0;
-// 			while(i < 15)
-// 			{
-// 				printf("lui%d toi%d\n", r1[i], r2[i]);
-// 				i++;
-// 			}
-
-// 	// printf("%d\n",memcmp(ft_memccpy(v, s, 'm', 22), memccpy(v, s, 'm', 22), 0));
-// 			return (0);
-// }

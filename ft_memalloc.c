@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muamdah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: miclaude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/11 13:06:51 by muamdah           #+#    #+#             */
-/*   Updated: 2017/12/29 17:23:54 by muamdah          ###   ########.fr       */
+/*   Created: 2017/11/12 11:52:56 by miclaude          #+#    #+#             */
+/*   Updated: 2017/11/22 15:42:00 by miclaude         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	*ft_memalloc(size_t size)
 {
-	void	*fresh;
-	fresh = malloc(sizeof(size));
-	if (!fresh || size > 2147493647)
-		return (NULL);
-	ft_bzero(fresh, size);
-	return (fresh);
+	char *str;
+
+	if (!(str = (char*)malloc(sizeof(size_t) * size)))
+		return (0);
+	ft_bzero(str, size);
+	return ((void*)str);
 }
